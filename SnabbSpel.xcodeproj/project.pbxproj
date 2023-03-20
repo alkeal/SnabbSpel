@@ -16,6 +16,8 @@
 		005ED81629C889EC00D71180 /* SnabbSpelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED81529C889EC00D71180 /* SnabbSpelTests.swift */; };
 		005ED82029C889EC00D71180 /* SnabbSpelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED81F29C889EC00D71180 /* SnabbSpelUITests.swift */; };
 		005ED82229C889EC00D71180 /* SnabbSpelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED82129C889EC00D71180 /* SnabbSpelUITestsLaunchTests.swift */; };
+		005ED83129C88BCC00D71180 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED83029C88BCC00D71180 /* GameViewController.swift */; };
+		005ED83329C88D0D00D71180 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED83229C88D0D00D71180 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		005ED81B29C889EC00D71180 /* SnabbSpelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnabbSpelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		005ED81F29C889EC00D71180 /* SnabbSpelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnabbSpelUITests.swift; sourceTree = "<group>"; };
 		005ED82129C889EC00D71180 /* SnabbSpelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnabbSpelUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		005ED83029C88BCC00D71180 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		005ED83229C88D0D00D71180 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				005ED80029C889EA00D71180 /* SceneDelegate.swift */,
 				005ED80229C889EA00D71180 /* ViewController.swift */,
 				005ED80429C889EA00D71180 /* Main.storyboard */,
+				005ED83029C88BCC00D71180 /* GameViewController.swift */,
+				005ED83229C88D0D00D71180 /* ResultViewController.swift */,
 				005ED80729C889EC00D71180 /* Assets.xcassets */,
 				005ED80929C889EC00D71180 /* LaunchScreen.storyboard */,
 				005ED80C29C889EC00D71180 /* Info.plist */,
@@ -258,6 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005ED83329C88D0D00D71180 /* ResultViewController.swift in Sources */,
+				005ED83129C88BCC00D71180 /* GameViewController.swift in Sources */,
 				005ED80329C889EA00D71180 /* ViewController.swift in Sources */,
 				005ED7FF29C889EA00D71180 /* AppDelegate.swift in Sources */,
 				005ED80129C889EA00D71180 /* SceneDelegate.swift in Sources */,
