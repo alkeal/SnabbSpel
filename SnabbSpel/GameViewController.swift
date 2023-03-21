@@ -7,23 +7,55 @@
 
 import UIKit
 
+
+
+
 class GameViewController: UIViewController {
+    
+    
+    
+    @IBOutlet weak var gameTimerLabel: UILabel!
+    
+    var timer: Timer?
+    let formatter = DateFormatter()
+    
+    
+    @IBOutlet weak var guessTextView: UITextField!
+    
+    var names: Set = ["Alex","Erik","Björn","Älg","Järv"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        formatter.timeStyle = DateFormatter.Style.medium
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: gameTimer(timer:))
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func playButton(_ sender: UIButton) {
+     
+        timer?.invalidate()
+     //  let names
+        navigationController?.popViewController(animated: true)
+   if names.contains("Alex"){
+       
+       //let name = gameLabelText.text
+        
+       
+   } else {
+     //  gameLabelText.text = "Fel svar!"
+   }
     }
-    */
+    
+    func gameTimer(timer: Timer){
+       
+        let date = Date()
+        let gameTime = formatter.string(from: date)
+        gameTimerLabel.text = gameTime
+    }
+    deinit{
+        timer?.invalidate()
+    }
 
+  
 }
