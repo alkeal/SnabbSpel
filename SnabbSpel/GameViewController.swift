@@ -14,48 +14,113 @@ class GameViewController: UIViewController {
     
     
     
+    
+    @IBOutlet weak var roundsLabel: UILabel!
     @IBOutlet weak var gameTimerLabel: UILabel!
-    
-    var timer: Timer?
-    let formatter = DateFormatter()
-    
-    
+    @IBOutlet weak var pointsCountLabel: UILabel!
+    var superTimer : Timer?
+    var timeTotal = 10
+    var timeLeft = 10
+    var counter = 0
+    var rounds = 0
+    //  let formatter = DateFormatter()
+        
     @IBOutlet weak var guessTextView: UITextField!
     
-    var names: Set = ["Alex","Erik","Björn","Älg","Järv"]
-
+    @IBOutlet weak var writeGuessTextView: UITextField!
+    
+    
+    let listOfwords = listOfWords()
+    //var word: [Words]?
+    var words1: String = ""
+    var words2: String = ""
+    var words3: String = ""
+    var words4: String = ""
+    
+  
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+       //shuffleLife()
+      // checkAnswerGame()
+        stopTimer()
+        writeGuessTextView.becomeFirstResponder()
         
-        formatter.timeStyle = DateFormatter.Style.medium
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: gameTimer(timer:))
+       
+
+       
+        
+        
+
+        
+        
+        
         
     }
     
     @IBAction func playButton(_ sender: UIButton) {
-     
-        timer?.invalidate()
-     //  let names
-        navigationController?.popViewController(animated: true)
-   if names.contains("Alex"){
-       
-       //let name = gameLabelText.text
+    
         
-       
-   } else {
-     //  gameLabelText.text = "Fel svar!"
-   }
+     
     }
     
-    func gameTimer(timer: Timer){
-       
-        let date = Date()
-        let gameTime = formatter.string(from: date)
-        gameTimerLabel.text = gameTime
-    }
-    deinit{
-        timer?.invalidate()
-    }
+    @objc func timerDown(){
+        
+        if timeLeft>0{
+            timeLeft -= 1
+            gameTimerLabel.text = "Tid kvar:  \(timeLeft) "
+        }else{
+              stopTimer()
+            counter = counter + 1
+            pointsCountLabel.text = "Dina poäng: \(counter)"
+            rounds = rounds + 1
+            roundsLabel.text = "Omgång: \(rounds)"
+        }
+        
 
+    }
+    
+    func shuffleLife(){
+        
+        if let shufflemania = listOfwords.shuffleWord(){
+            
+            guessTextView.text = shufflemania
+            
+            timeLeft = timeTotal
+            gameTimerLabel.text = "Tid kvar:  \(timeLeft) "
+            
+            superTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerDown), userInfo: nil, repeats: true)
+        }
+        
+    }
+    
+    
+    
+    
+    func stopTimer(){
+        superTimer?.invalidate()
+        gameTimerLabel.text = "Tiden är slut!!"
+        //gameTimerLabel.text = "\(timeLeft)"
+        writeGuessTextView.text = ""
+        shuffleLife()
+    }
+    
+    
+    
   
+    func checkAnswerGame(){
+      //  if guessTextView.text == writeGuessTextView.text {
+        // }else{
+
+        // }
+       guard let word = guessTextView.text,
+        let writeWord = writeGuessTextView.text
+        else {
+            return
+        }
+    
+   }
+    
 }
+

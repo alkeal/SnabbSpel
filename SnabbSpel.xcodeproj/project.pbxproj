@@ -18,6 +18,7 @@
 		005ED82229C889EC00D71180 /* SnabbSpelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED82129C889EC00D71180 /* SnabbSpelUITestsLaunchTests.swift */; };
 		005ED83129C88BCC00D71180 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED83029C88BCC00D71180 /* GameViewController.swift */; };
 		005ED83329C88D0D00D71180 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED83229C88D0D00D71180 /* ResultViewController.swift */; };
+		0060886229C9D8BE00257100 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0060886129C9D8BE00257100 /* Words.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		005ED82129C889EC00D71180 /* SnabbSpelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnabbSpelUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		005ED83029C88BCC00D71180 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		005ED83229C88D0D00D71180 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		0060886129C9D8BE00257100 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		005ED7F229C889EA00D71180 = {
 			isa = PBXGroup;
 			children = (
+				0060886129C9D8BE00257100 /* Words.swift */,
 				005ED7FD29C889EA00D71180 /* SnabbSpel */,
 				005ED81429C889EC00D71180 /* SnabbSpelTests */,
 				005ED81E29C889EC00D71180 /* SnabbSpelUITests */,
@@ -267,6 +270,7 @@
 				005ED83329C88D0D00D71180 /* ResultViewController.swift in Sources */,
 				005ED83129C88BCC00D71180 /* GameViewController.swift in Sources */,
 				005ED80329C889EA00D71180 /* ViewController.swift in Sources */,
+				0060886229C9D8BE00257100 /* Words.swift in Sources */,
 				005ED7FF29C889EA00D71180 /* AppDelegate.swift in Sources */,
 				005ED80129C889EA00D71180 /* SceneDelegate.swift in Sources */,
 			);
