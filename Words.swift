@@ -16,7 +16,8 @@ class listOfWords{
    Word(word: "Alex"),
 Word(word: "David"),
 Word(word: "Hej"),
-Word(word: "Godmorgon")]
+Word(word: "Godmorgon"),
+   Word(word: "Godnatt")]
    // init(word:String)
    // {
     //    self.word = word
