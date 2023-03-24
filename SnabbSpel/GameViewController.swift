@@ -25,13 +25,13 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     var timeLeft = 10
     
-    var countingPoints = 1
+    var countingPoints = 0
     
-    var points = 0
+    var points = 1
     
-    var rounds = 0
+    var rounds: Int = 0
     
-    var roundsTotal = 10
+    var roundsTotal: Int = 10
     
     
     @IBOutlet weak var guessTextView: UITextField!
@@ -114,7 +114,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
             timeLeft = timeTotal
             gameTimerLabel.text = "Tid kvar:  \(timeLeft) "
-        
+           
             
             superTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerDown), userInfo: nil, repeats: true)
             
@@ -122,7 +122,20 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             //rounds = roundsTotal
             // gameTimerLabel.text = "Spelet är slut!"
         }
-        
+        if rounds < roundsTotal {
+           rounds += 1
+            
+           
+           roundsLabel.text = "Omgång: \(rounds)"
+            
+            
+        } else{
+          
+            superTimer?.invalidate()
+            
+          
+            
+        }
     }
     
     
@@ -135,9 +148,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         //gameTimerLabel.text = "\(timeLeft)"
         writeGuessTextView.text = ""
         shuffleLife()
+        //roundsLogic()
        // guessWord()
-        rounds = rounds + 1
-        roundsLabel.text = "Omgång: \(rounds)"
+       // rounds = rounds + 1
+      //  roundsLabel.text = "Omgång: \(rounds)"
         
     }
     
@@ -154,20 +168,46 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
            // shuffleLife()
             stopTimer()
-            points += 1
+          //  roundsLogic()
+            countingPoints += 1
            
             
              
             }
             else {
                 
-               points -= 1
+               countingPoints -= 1
                 
             }
             pointsCountLabel.text = "Dina poäng: \(countingPoints)"
             
-        }
-        
-    }
+   }
+
+    
     
 
+func roundsLogic(){
+    
+    
+    
+   if rounds < roundsTotal {
+      rounds += 1
+       
+      
+      roundsLabel.text = "Omgång: \(rounds)"
+       
+       
+   } else{
+     
+       superTimer?.invalidate()
+       
+      // rounds -= 1
+       
+   }
+    
+    
+    
+}
+    
+    
+    }
