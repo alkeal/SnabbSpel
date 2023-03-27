@@ -33,6 +33,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     var roundsTotal: Int = 10
     
+    let goToHighScore = "goToHighScore"
+    
+    let goToEndGame = "goToEndGame"
     
     @IBOutlet weak var guessTextView: UITextField!
     
@@ -53,13 +56,12 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         
-       //stopTimer()
-        //writeGuessTextView.delegate = self
-        stopTimer()
+    
+        gameFunctions()
         
         writeGuessTextView.becomeFirstResponder()
         
-       writeGuessTextView.addTarget(self, action: #selector(Check), for: .editingChanged)
+       writeGuessTextView.addTarget(self, action: #selector(CheckSpelling), for: .editingChanged)
    
         
         
@@ -68,18 +70,34 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         
         
     }
+    
+    
 
-    @objc func Check(){
-      // stopTimer()
+    @objc func CheckSpelling(){
+
      
         guessWord()
         
     }
     
+    // spelets funktioner och i vilken ordning de ska användas i.
+    func gameFunctions(){
+        
+        superTimer?.invalidate()
+        
+        gameTimerLabel.text = "Tiden är slut!!"
+        writeGuessTextView.text = ""
+        roundsLogic()
+        shuffleAllWords()
+   
+    }
+    
+    
+    
     @IBAction func playButton(_ sender: UIButton) {
         
-        
-        
+        performSegue(withIdentifier: goToEndGame, sender: self)
+
     }
     
     
@@ -87,7 +105,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     // efter varje ord.
     
     
-    @objc func timerDown(){
+    @objc func timerCountDown(){
         
         
         
@@ -96,8 +114,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             gameTimerLabel.text = "Tid kvar:  \(timeLeft) "
             
         } else{
-            stopTimer()
-            
+            gameFunctions()
+           
         }
         
         
@@ -106,54 +124,29 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     // Blandar de olika orden och ger dig en specifik tidsram.
     
-    func shuffleLife(){
+    func shuffleAllWords(){
         
-        if let shufflemania = listOfwords.shuffleWord(){
+        if let shuffleWordList = listOfwords.shuffleWord(){
             
-            guessTextView.text = shufflemania
+            guessTextView.text = shuffleWordList
             
             timeLeft = timeTotal
             gameTimerLabel.text = "Tid kvar:  \(timeLeft) "
            
             
-            superTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerDown), userInfo: nil, repeats: true)
+            superTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCountDown), userInfo: nil, repeats: true)
             
           
-            //rounds = roundsTotal
-            // gameTimerLabel.text = "Spelet är slut!"
+          
         }
-        if rounds < roundsTotal {
-           rounds += 1
             
-           
-           roundsLabel.text = "Omgång: \(rounds)"
-            
-            
-        } else{
-          
-            superTimer?.invalidate()
-            
-          
-            
-        }
-    }
-    
-    
-    
-    
-    func stopTimer(){
-        superTimer?.invalidate()
-        
-        gameTimerLabel.text = "Tiden är slut!!"
-        //gameTimerLabel.text = "\(timeLeft)"
-        writeGuessTextView.text = ""
-        shuffleLife()
-        //roundsLogic()
-       // guessWord()
-       // rounds = rounds + 1
-      //  roundsLabel.text = "Omgång: \(rounds)"
         
     }
+    
+    
+    
+    
+
     
     
    func guessWord(){
@@ -166,25 +159,27 @@ class GameViewController: UIViewController, UITextFieldDelegate {
        }
         if word == writeWord {
             
-           // shuffleLife()
-            stopTimer()
-          //  roundsLogic()
+            gameFunctions()
+          
             countingPoints += 1
-           
             
-             
+            
             }
-            else {
-                
-               countingPoints -= 1
-                
+              else if word != writeWord{
+                  
+                 // countingPoints -= 1
+                  pointsCountLabel.text = "Dina poäng: \(countingPoints)"
+                 
             }
             pointsCountLabel.text = "Dina poäng: \(countingPoints)"
             
    }
+    
+    
+
 
     
-    
+    // Ökar rundornas siffror efter rätt svar
 
 func roundsLogic(){
     
@@ -198,16 +193,27 @@ func roundsLogic(){
        
        
    } else{
-     
+     goToHighScoreAndEnd()
        superTimer?.invalidate()
-       
-      // rounds -= 1
-       
    }
     
     
     
 }
     
+    // Efter tio rundor ska du bli skickad till nästa viewcontroller, så du kan se dina poäng.
     
-    }
+    func goToHighScoreAndEnd(){
+        
+        if let finalPointsVC = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController {
+                    finalPointsVC.gamePoints = countingPoints
+                    present(finalPointsVC, animated: true, completion: nil)
+                }
+    
+                
+      }
+    
+
+}
+    
+

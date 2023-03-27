@@ -8,22 +8,38 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+    
+    var gamePoints = 0
 
+    let goToPlayAgain = "goToPlayAgain"
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        resultFromGame()
     }
     
+    // Ger dig diit resultat från din omgång och skicka via en segue
+    
+    func resultFromGame(){
+        
+          resultLabel.text = "Ditt resultat: \(gamePoints)"
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
+    
+    
+    // gör så att du får spela om igen via en segue
+    
+    @IBAction func playAgainButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: goToPlayAgain, sender: self)
+
+    }
+    
+ 
 
 }
