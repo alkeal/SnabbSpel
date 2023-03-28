@@ -25,9 +25,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     var timeLeft = 10
     
-    var countingPoints = 0
+    var addOrDeletePoints = 0
     
-    var points = 1
+    var points = 5
     
     var rounds: Int = 0
     
@@ -71,7 +71,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
+    // kollar att ordet är ändrat och inom de specifika ramarna för att ge dig poäng eller inte
+    // den jämför det två olika textfields.
 
     @objc func CheckSpelling(){
 
@@ -93,6 +94,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    // Denna knapp ger dig endast möjligheten att avsluta spelet och komma tillbaka till första viewcontrollern.
     
     @IBAction func playButton(_ sender: UIButton) {
         
@@ -103,8 +105,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     // Ger dig en timer som räknar ner från 10 och ger dig en poäng och en ny runda
     // efter varje ord.
-    
-    
+    // Om ordet är felstavat när tiden är ute får du minus fem poäng.
+    // dock om du inte har några poäng som får du inga minus den reagerar endast om du har poäng.
+  
     @objc func timerCountDown(){
         
         
@@ -113,16 +116,23 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             timeLeft -= 1
             gameTimerLabel.text = "Tid kvar:  \(timeLeft) "
             
-        } else{
-            gameFunctions()
-           
         }
-        
+       else if (timeLeft == 0) && addOrDeletePoints > 0 {
+            addOrDeletePoints -= 5
+            pointsCountLabel.text = "Dina poäng: \(addOrDeletePoints)"
+     
+            gameFunctions()
+        }
+        else{
+            
+            gameFunctions()
+        }
         
     }
     
     
     // Blandar de olika orden och ger dig en specifik tidsram.
+    // som är timeTotal.
     
     func shuffleAllWords(){
         
@@ -147,7 +157,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     
 
-    
+    // Om ordet är rätt ska den ge dig poäng och köra funktionen för spelet
+    // och lägga till dina poäng i labeln
     
    func guessWord(){
         
@@ -161,25 +172,24 @@ class GameViewController: UIViewController, UITextFieldDelegate {
             
             gameFunctions()
           
-            countingPoints += 1
+            addOrDeletePoints += 5
             
             
             }
               else if word != writeWord{
                   
-                 // countingPoints -= 1
-                  pointsCountLabel.text = "Dina poäng: \(countingPoints)"
+        
+                  pointsCountLabel.text = "Dina poäng: \(addOrDeletePoints)"
                  
             }
-            pointsCountLabel.text = "Dina poäng: \(countingPoints)"
+            pointsCountLabel.text = "Dina poäng: \(addOrDeletePoints)"
             
    }
     
-    
 
 
     
-    // Ökar rundornas siffror efter rätt svar
+    // Ökar rundornas siffror efter rätt svar, och efter de antal rundorn som är bestämda har varit så går den till resultat viewn.
 
 func roundsLogic(){
     
@@ -200,20 +210,29 @@ func roundsLogic(){
     
     
 }
+
+    
+    
+    
     
     // Efter tio rundor ska du bli skickad till nästa viewcontroller, så du kan se dina poäng.
     
     func goToHighScoreAndEnd(){
         
         if let finalPointsVC = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController {
-                    finalPointsVC.gamePoints = countingPoints
+                    finalPointsVC.gamePoints = addOrDeletePoints
                     present(finalPointsVC, animated: true, completion: nil)
                 }
     
                 
-      }
-    
+       }
 
+    
+    
+    
+    
+    
+    
+    
+    
 }
-    
-

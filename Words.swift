@@ -11,18 +11,19 @@ struct Word {
     
     let word : String?
 }
+
+  // Orden som används i spelet
 class listOfWords{
     var word = [
    Word(word: "Alex"),
-Word(word: "David"),
-Word(word: "Hej"),
-Word(word: "Godmorgon"),
-   Word(word: "Godnatt")]
-   // init(word:String)
-   // {
-    //    self.word = word
-        
-   // }
+   Word(word: "David"),
+   Word(word: "Hej"),
+   Word(word: "Godmorgon"),
+   Word(word: "Godnatt"),
+   Word(word: "Sverige"),
+   Word(word: "Danmark"),
+   Word(word: "Finland")]
+  
     
     func shuffleWord() -> String? {
            

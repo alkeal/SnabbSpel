@@ -22,7 +22,7 @@ class ResultViewController: UIViewController {
         resultFromGame()
     }
     
-    // Ger dig diit resultat från din omgång och skicka via en segue
+    // Ger dig diit resultat från din omgång och skickar den via en segue
     
     func resultFromGame(){
         
@@ -32,7 +32,7 @@ class ResultViewController: UIViewController {
     }
     
     
-    // gör så att du får spela om igen via en segue
+    // gör så att du får spela om igen via en segue , poäng och rundor återställs.
     
     @IBAction func playAgainButton(_ sender: UIButton) {
         
