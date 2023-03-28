@@ -24,20 +24,15 @@ class listOfWords{
    Word(word: "Danmark"),
    Word(word: "Finland")]
   
+    // blandar dina ord som strängar
+    // och ger dig ett av orden
     
     func shuffleWord() -> String? {
            
         let shuffleWords = word.shuffled()
         return shuffleWords.first?.word
         
-         //let words = word,!words.isEmpty{
-         //   let randomIndex = Int.random(in: 0..<words.count)
-         //   let randomWords = words[randomIndex]
-         //   guessTextView.text = randomWords.word
-             
-             
-             
-           
+      
     }
   
     

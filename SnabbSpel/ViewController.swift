@@ -17,13 +17,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
+    
+    // Skickar dig till gameviewcontroller alltså själva spelet
 
     @IBAction func playButton(_ sender: UIButton) {
        
         performSegue(withIdentifier: goToGameSegue, sender: self)
     }
+    
+    // Denna knapp skickar dig till sidan resultviewcontroller där du kommer när spelet är färdigspelat eller om du vill se reglerna.
     
     @IBAction func resultButton(_ sender: UIButton) {
         

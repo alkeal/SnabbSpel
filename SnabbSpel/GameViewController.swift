@@ -27,8 +27,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     var addOrDeletePoints = 0
     
-    var points = 5
-    
     var rounds: Int = 0
     
     var roundsTotal: Int = 10
@@ -215,7 +213,7 @@ func roundsLogic(){
     
     
     
-    // Efter tio rundor ska du bli skickad till nästa viewcontroller, så du kan se dina poäng.
+    // Efter tio rundor ska du bli skickad till nästa viewcontroller, så du kan se dina poäng i resultviewcontrollern.
     
     func goToHighScoreAndEnd(){
         
