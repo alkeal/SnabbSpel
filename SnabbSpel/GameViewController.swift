@@ -34,7 +34,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     
     var rounds: Int = 0
     
-    var roundsTotal: Int = 10
+    var roundsTotal: Int = 11
     
     let goToHighScore = "goToHighScore"
     
