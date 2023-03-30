@@ -15,14 +15,18 @@ struct Word {
   // Orden som används i spelet
 class listOfWords{
     var word = [
-   Word(word: "Alex"),
-   Word(word: "David"),
+   Word(word: "Vinter"),
+   Word(word: "Höst"),
    Word(word: "Hej"),
    Word(word: "Godmorgon"),
    Word(word: "Godnatt"),
    Word(word: "Sverige"),
    Word(word: "Danmark"),
-   Word(word: "Finland")]
+   Word(word: "Finland"),
+   Word(word: "Island"),
+   Word(word: "Färöarna"),
+   Word(word: "Vår"),
+   Word(word: "Sommar") ]
   
     // blandar dina ord som strängar
     // och ger dig ett av orden

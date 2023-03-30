@@ -18,7 +18,7 @@ class HighScoreViewController: UIViewController {
     // poängen som skickas från resultat viewcontrollern
     var highScorePoints = 0
     
-    var finalPoints = 0
+   
     
     let userDefaults = UserDefaults()
 
@@ -26,15 +26,13 @@ class HighScoreViewController: UIViewController {
         super.viewDidLoad()
 
 
+     
+          // highScorePoints =  UserDefaults.standard.integer(forKey: "highScore")
+            highScoreLabel.text =  " 1. \(highScorePoints)"
+       
         
-       currentHighScore()
         
-    
-           
-            
         }
-        
-        
       
 
 
@@ -44,21 +42,19 @@ class HighScoreViewController: UIViewController {
     func currentHighScore(){
         
         
+        highScorePoints = UserDefaults.standard.integer(forKey: "highScore")
         highScoreLabel.text =  " 1. \(highScorePoints)"
+            
         
+    
     }
     
-  //  Med denna funktion ska det nya resultatet du fick läggas till i listan om det är högre än det senaste resultatet.
-    
-    func addHighScoreToList(){
-     
-            
             
             
         }
  
 
-    }
+    
     
         
 
@@ -67,5 +63,6 @@ class HighScoreViewController: UIViewController {
   
  
 
+    
     
     
