@@ -19,6 +19,9 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var gameTimerLabel: UILabel!
     @IBOutlet weak var pointsCountLabel: UILabel!
     
+    @IBOutlet weak var highScoreThree: UILabel!
+    @IBOutlet weak var highScoreTwo: UILabel!
+    @IBOutlet weak var highScoreOne: UILabel!
     var superTimer : Timer?
     
     var timeTotal = 10
@@ -26,6 +29,8 @@ class GameViewController: UIViewController, UITextFieldDelegate {
     var timeLeft = 10
     
     var addOrDeletePoints = 0
+    
+    var highScorePoints = 0
     
     var rounds: Int = 0
     
@@ -54,7 +59,6 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         
-    
         gameFunctions()
         
         writeGuessTextView.becomeFirstResponder()
@@ -62,11 +66,7 @@ class GameViewController: UIViewController, UITextFieldDelegate {
        writeGuessTextView.addTarget(self, action: #selector(CheckSpelling), for: .editingChanged)
    
         
-        
-        
-        
-        
-        
+
     }
     
     // kollar att ordet är ändrat och inom de specifika ramarna för att ge dig poäng eller inte
@@ -169,9 +169,10 @@ class GameViewController: UIViewController, UITextFieldDelegate {
         if word == writeWord {
             
             gameFunctions()
-          
             addOrDeletePoints += 5
             
+           
+                
             
             }
               else if word != writeWord{

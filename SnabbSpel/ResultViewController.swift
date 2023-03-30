@@ -12,6 +12,7 @@ class ResultViewController: UIViewController {
     var gamePoints = 0
 
     let goToPlayAgain = "goToPlayAgain"
+    let goToHighScore = "goToHighScore"
     
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -40,6 +41,16 @@ class ResultViewController: UIViewController {
 
     }
     
- 
-
+ // När du trycker på highscoren texten ska du komma till en ny viewcontroller som visar de tre senaste omgångarnas poäng
+    
+    @IBAction func highScoreButton(_ sender: UIButton) {
+        
+        if let finalPointsVC = storyboard?.instantiateViewController(withIdentifier: "HighScoreViewController") as? HighScoreViewController {
+                    finalPointsVC.highScorePoints = gamePoints
+                    present(finalPointsVC, animated: true, completion: nil)
+                }
+        performSegue(withIdentifier: goToHighScore, sender: self)
+        
+    }
+    
 }
